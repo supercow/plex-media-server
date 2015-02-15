@@ -20,21 +20,30 @@ class plexmediaserver (
   $plex_media_server_max_open_files          =
     $plexmediaserver::params::plex_media_server_max_open_files,
   $plex_media_server_tmpdir                  =
-    $plexmediaserver::params::plex_media_server_tmpdir
+    $plexmediaserver::params::plex_media_server_tmpdir,
+  $use_repo                                  =
+    false,
 ) inherits plexmediaserver::params {
-  case $::operatingsystem {
-    'Darwin': {
-      staging::deploy { $plex_pkg:
-        source => $plex_url,
-        target => '/tmp',
-        before => Package['plexmediaserver'],
+
+  $plex_pkg_source = $use_repo ? {
+    false => "/tmp/${plex_pkg}",
+    true  => undef,
+  }
+  if $use_repo == false {
+    case $::operatingsystem {
+      'Darwin': {
+        staging::deploy { $plex_pkg:
+          source => $plex_url,
+          target => '/tmp',
+          before => Package['plexmediaserver'],
+        }
       }
-    }
-    default: {
-      staging::file { $plex_pkg:
-        source => $plex_url,
-        target => "/tmp/${plex_pkg}",
-        before => Package['plexmediaserver'],
+      default: {
+        staging::file { $plex_pkg:
+          source => $plex_url,
+          target => "/tmp/${plex_pkg}",
+          before => Package['plexmediaserver'],
+        }
       }
     }
   }
@@ -48,8 +57,11 @@ class plexmediaserver (
     }
   }
   package { 'plexmediaserver':
-    provider => $plex_provider,
-    source   => "/tmp/${plex_pkg}",
+    provider => $use_repo ? { 
+      false => $plex_provider,
+      true  => undef,
+    },
+    source   => $plex_pkg_source,
   }
   if $plexmediaserver::params::plex_config {
     file { 'plexconfig':
