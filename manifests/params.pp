@@ -56,12 +56,7 @@ class plexmediaserver::params {
   # General stuff
   $plex_user                                       = 'plex'
   $plex_media_server_home                          = '/usr/lib/plexmediaserver'
-  $plex_media_server_application_support_dir_array = [
-    '`getent passwd $PLEX_USER|awk -F : \'{print $6}\'`',
-    '/Library/Application Support'
-  ]
-  $plex_media_server_application_support_dir =
-    join($plex_media_server_application_support_dir_array, ' ')
+  $plex_media_server_application_support_dir ='`getent passwd $PLEX_USER|awk -F : \'{print $6}\'`/Library/Application Support'
   $plex_media_server_max_plugin_procs        = '6'
   $plex_media_server_max_stack_size          = '10000'
   $plex_media_server_max_lock_mem            = '3000'
