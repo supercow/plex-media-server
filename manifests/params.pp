@@ -2,19 +2,19 @@ class plexmediaserver::params {
   # Get download URL
   case $::operatingsystem {
     'Darwin': {
-      $plex_url      = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/PlexMediaServer-0.9.9.12.504-3e7f93c-OSX.zip'
-      $plex_pkg      = 'PlexMediaServer-0.9.9.12.504-3e7f93c-OSX.zip'
+      $plex_url      = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/PlexMediaServer-1.13.2.5154-fd05be322-OSX.zip'
+      $plex_pkg      = 'PlexMediaServer-1.13.2.5154-fd05be322-OSX.zip'
       $plex_provider = 'pkgdmg'
     }
     'Ubuntu': {
       case $::architecture {
         'i386': {
-          $plex_url = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver_0.9.9.12.504-3e7f93c_i386.deb'
-          $plex_pkg = 'plexmediaserver_0.9.9.12.504-3e7f93c_i386.deb'
+          $plex_url = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver_1.13.2.5154-fd05be322_i386.deb'
+          $plex_pkg = 'plexmediaserver_1.13.2.5154-fd05be322_i386.deb'
         }
         default : {
-          $plex_url = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver_0.9.9.12.504-3e7f93c_amd64.deb'
-          $plex_pkg = 'plexmediaserver_0.9.9.12.504-3e7f93c_amd64.deb'
+          $plex_url = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver_1.13.2.5154-fd05be322_amd64.deb'
+          $plex_pkg = 'plexmediaserver_1.13.2.5154-fd05be322_amd64.deb'
         }
       }
       $plex_provider = 'dpkg'
@@ -24,12 +24,12 @@ class plexmediaserver::params {
     'Fedora': {
       case $::architecture {
         'i386': {
-          $plex_url = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver-0.9.9.12.504-3e7f93c.i386.rpm'
-          $plex_pkg = 'plexmediaserver-0.9.9.12.504-3e7f93c.i386.rpm'
+          $plex_url = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver-1.13.2.5154-fd05be322.i386.rpm'
+          $plex_pkg = 'plexmediaserver-1.13.2.5154-fd05be322.i386.rpm'
         }
         default : {
-          $plex_url = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver-0.9.9.12.504-3e7f93c.x86_64.rpm'
-          $plex_pkg = 'plexmediaserver-0.9.9.12.504-3e7f93c.x86_64.rpm'
+          $plex_url = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver-1.13.2.5154-fd05be322.x86_64.rpm'
+          $plex_pkg = 'plexmediaserver-1.13.2.5154-fd05be322.x86_64.rpm'
         }
       }
       $plex_provider = 'rpm'
@@ -38,12 +38,12 @@ class plexmediaserver::params {
     'CentOS': {
       case $::architecture {
         'i386': {
-          $plex_url = 'http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver-0.9.9.12.504-3e7f93c.i386.rpm'
-          $plex_pkg = 'plexmediaserver-0.9.9.12.504-3e7f93c.i386.rpm'
+          $plex_url = 'http://downloads.plexapp.com/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver-1.13.2.5154-fd05be322.i386.rpm'
+          $plex_pkg = 'plexmediaserver-1.13.2.5154-fd05be322.i386.rpm'
         }
         default : {
-          $plex_url = 'https://downloads.plex.tv/plex-media-server/0.9.11.7.803-87d0708/plexmediaserver-0.9.11.7.803-87d0708.x86_64.rpm' 
-          $plex_pkg = 'plexmediaserver-0.9.11.7.803-87d0708.x86_64.rpm'
+          $plex_url = 'https://downloads.plex.tv/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver-1.13.2.5154-fd05be322.x86_64.rpm' 
+          $plex_pkg = 'plexmediaserver-1.13.2.5154-fd05be322.x86_64.rpm'
         }
       }
       $plex_provider = 'rpm'
